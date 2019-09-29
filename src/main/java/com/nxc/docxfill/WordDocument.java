@@ -147,7 +147,7 @@ public class WordDocument {
     private void afterTextStyle(Style style, Field field, XWPFRun run) {
         if (style != null) {
             if (style.getAfterReturn() != null && style.getAfterReturn()) {
-                run.addCarriageReturn();
+                run.addBreak();
             }
             if (style.getAfterTab() != null && style.getAfterTab()) {
                 run.addTab();
@@ -195,7 +195,7 @@ public class WordDocument {
             if (field.isAnnotationPresent(AfterReturn.class)) {
                 AfterReturn afterReturn = field.getAnnotation(AfterReturn.class);
                 if (afterReturn.value()) {
-                    run.addCarriageReturn();
+                    run.addBreak();
                 }
             }
             if (field.isAnnotationPresent(AfterTab.class)) {
@@ -277,7 +277,7 @@ public class WordDocument {
                 run.addTab();
             }
             if (style.getBeforeReturn() != null && style.getBeforeReturn()) {
-                run.addCarriageReturn();
+                run.addBreak();
             }
         } else {
             if (field.isAnnotationPresent(BeforeTab.class)) {
@@ -287,7 +287,7 @@ public class WordDocument {
             }
             if (field.isAnnotationPresent(BeforeReturn.class)) {
                 if (field.getAnnotation(BeforeReturn.class).value()) {
-                    run.addCarriageReturn();
+                    run.addBreak();
                 }
             }
         }
